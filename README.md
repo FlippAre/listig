@@ -14,19 +14,43 @@
 - Längden på en lista är <1 000 000
 
 ## Marknad
-Vem är listig riktad till? Följderna av det valet.
+### Vem är listig riktad till? Följderna av det valet.
+Listig är en produkt för både privatpersoner och företag som enkelt vill hålla koll på sin data, lite so en grafisk DIY-databas. Enkelhet är viktigare än avancerade funktioner, dock måste ett visst mått av "hackbarhet" finnas, så man kan bygga det man vill.
 
-Hur mycket av ett programmeringsspråk/Excel ska det bli? Följderna där?
+### Hur mycket av ett programmeringsspråk/Excel ska det bli? Följderna där?
+Inte så mycket excel eller programeringsspråk. Mer åt en grafisk databas. Absolut att det kan finnas enklare formler, så som sumeringar eller medelvärden, men bör stanna där. All annan utbyggbarhet får ske via ett snyggt API, som tillåter de som vill att bygga precis vad de vill
 
-Vad ska det kunna användas till?
+### Vad ska det kunna användas till?
+För privatpersoner:
+- Gemensam packningslista
+- Privatekonomi
+- Hålla koll på inventarier
+- Dela fakta
+- Datatabeller enkelt tillgängliga, typ världens berg.
+
+För förenigar:
+- Medlemsregister
+- Publicera sin data om verksamheten
+- Event-listior
+- Anmälningsformulär
+
+
+För företag
+- Samla data från t.ex web-formulär
+- Bygga sitt eget verksamhetssystem, crm-system osv
+- Dela datablad om produkter
+- Bygga enkla rapporter
+
 
 ### Monetization
-Gratis för N publika listor. Månadskostnad för privata listor och M listor?
+Gratis för publika listor. Månadskostnad per privat lista.
 
 ## Datatyper
 Det är mycket lättare att resonera fram till ett hållbart dataformat om vi har koll på så många datatyper som möjligt som vi vill ha med (minst de som ska med i MVP):
 
-Ska värden kunna vara av `optional`-typ, eller krävs det värde i alla fält? Följderna av det valet (bl.a att formatet ska optimeras för sparse data - t.ex som Excel gör)?
+_Ska värden kunna vara av `optional`-typ, eller krävs det värde i alla fält? Följderna av det valet (bl.a att formatet ska optimeras för sparse data - t.ex som Excel gör)?_
+Ja, värden skall kunna vara tomma och är det som default. Kanske att man kan ange att vissa kolumner inte får vara tomma.
+
 
 - Text
 - Tal
@@ -40,9 +64,16 @@ Ska värden kunna vara av `optional`-typ, eller krävs det värde i alla fält? 
 
 
 ### Referenser
-Hur ska referenserna se ut? `Från listan 'valuta' hämta fält 2 'USD' där är kolumn 1='SEK', hämta fält i kolumn 2?`
+#### Hur ska referenserna se ut?
+`Från listan 'valuta' hämta fält 2 'USD' där är kolumn 1='SEK', hämta fält i kolumn 2?`
+När man refererar till en annan lista anger man vilken kolumn i den listan man vill skall visas, med kolumnnamn som referense. 
+Exempel:
+Thinkflipp/books::Author
 
-Massor av fler exempel - imho det är detta som kommer bli svårt.
+Exempel med pinnad version:
+Thinkflipp/books#46775763834::Author
+
+Kanske länkar man alltid automatiskt mot en pinnad version? 
 
 ## Operationer
 - Vad ska kunna göras med listorna?
@@ -58,15 +89,26 @@ Massor av fler exempel - imho det är detta som kommer bli svårt.
 
 ## Övrigt att komma ihåg
 
-- Publika/privata listor ger att alla listor måste ha access rights.
-- Publika/privata listor ger att det förmodligen behövs organisationer.
-- Referenser till gamla versioner? Kräver det att servern har alla gamla versioner?
+- Publika/privata listor ger att alla listor måste ha access rights. Ja!
+  - Vi kör med CRUD behörigheter i alla listor. Där varje behörighet kan sättas per medlem i listan. Publika listor har alla som defeault R utan ägaren som har full CRUD
+  - Personer bjuds in till en lista för att få full eller delar av CRUD.
+  - En lista kan sätta globala världen för CRUD. Exemple alla i hela världen/organisationen kan läsa och skapa men inte ta bort eller uppdatera.
+- Publika/privata listor ger att det förmodligen behövs organisationer. Ja! Jämför med GitHub
+- Referenser till gamla versioner? Kräver det att servern har alla gamla versioner? Ja!
 - ...
 
 ## Filformat?
 
 ### Metadata
-Vad behöver vi veta om listan? Fält? Ägare?
+Vad behöver vi veta om listan? 
+- Fält 
+- Ägare
+- Skapad av
+- Skapad datum
+- Uppdaterad av
+- Uppdaterad datum
+- ID
+-....
 
 ### Data
 
