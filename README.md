@@ -67,13 +67,18 @@ Ja, värden skall kunna vara tomma och är det som default. Kanske att man kan a
 #### Hur ska referenserna se ut?
 `Från listan 'valuta' hämta fält 2 'USD' där är kolumn 1='SEK', hämta fält i kolumn 2?`
 När man refererar till en annan lista anger man vilken kolumn i den listan man vill skall visas, med kolumnnamn som referense. 
-Exempel:
-Thinkflipp/books::Author
-
+Exempel:`Thinkflipp/books::Author`
 Exempel med pinnad version:
-Thinkflipp/books#46775763834::Author
+`Thinkflipp/books#46775763834::Author`
 
 Kanske länkar man alltid automatiskt mot en pinnad version? 
+
+Man kanske vill ha två referenser mot en lista, där den ena referensen är en slav under den andra. Exempel en lista med valutor och växlingskurser. I 'vår' lista lägger man till en rad oc väljer en valuta, SEK, och vill då att växlingskursen skall hämtas automatiskt i nästa kolumn. Förslag:
+
+Kolumn1 (Valuta): `ListigGlobalLists/Money::Currency Name`
+
+Kolumn2 (Växlingskurs) `MyUser/MyList::Valuta->Currency Value`
+
 
 ## Operationer
 - Vad ska kunna göras med listorna?
